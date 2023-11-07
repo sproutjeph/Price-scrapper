@@ -1,8 +1,11 @@
 import HeroCarousel from "@/components/HeroCarousel";
+import ProductCard from "@/components/ProductCard";
 import Searchbar from "@/components/Searchbar";
+import { getAllProducts } from "@/libs/actions";
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+  const allProducts = await getAllProducts();
   return (
     <>
       <section className="px-6 md:px-20 py-24">
@@ -39,9 +42,9 @@ export default function Home() {
         <h2 className="section-text">Trending</h2>
 
         <div className="flex flex-wrap gap-x-8 gap-y-16">
-          {/* {allProducts?.map((product) => (
+          {allProducts?.map((product) => (
             <ProductCard key={product._id} product={product} />
-          ))} */}
+          ))}
         </div>
       </section>
     </>
